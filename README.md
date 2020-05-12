@@ -1,5 +1,10 @@
 # citsci.cauterize
 
+## motivating people
+
+With regards to open source development and stackeroverflow we see that technical experience and solving real world problems is always a valuable activity. Often these activites are used in CVs to certify problem solving skills. 
+We will try to motivate people to contribute by giving them the opportunity to certify their expierience in malware analysis via the web platform.
+
 ## Components
 ### Web-Interface
 #### initial goals
