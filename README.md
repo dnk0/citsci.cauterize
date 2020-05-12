@@ -1,13 +1,13 @@
 # citsci.cauterize
 
-## motivating people
+## Motivating People
 
 With regards to open source development and stackeroverflow we see that technical experience and solving real world problems is always a valuable activity. Often these activites are used in CVs to certify problem solving skills. 
 We will try to motivate people to contribute by giving them the opportunity to certify their expierience in malware analysis via the web platform.
 
 ## Components
 ### Web-Interface
-#### initial goals
+#### Initial Goals
 * show list of available malware scenarios
 
 | Date of submission | Download | Status | Title | Type | Plattform | Evasion against | Author | 
@@ -22,12 +22,12 @@ We will try to motivate people to contribute by giving them the opportunity to c
 * filter/search interface for researchers (example interest: show me all modified malware that is verified and evades windows defender)
 * export your progress as a experience certificate 
 ### Data-API
-#### initial goals
+#### Initial Goals
 * automate the process of the filter/search interface 
         * make it possible to attach the platform to your training data management system
         * subscribe to queries
 * generate signatures of all malware given a query
 ### Userspace-Interface
-#### initial goals
+#### Initial Goals
 * automate the process of creating a lab environment for evaluating malware samples
 * provide a documentation interface for your review
