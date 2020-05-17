@@ -22,3 +22,9 @@ services:
       - "5432:5432"
     volumes:
       - ./db/initial-schema.sql:/docker-entrypoint-initdb.d/init.sql
+  web:
+    build:
+      context: web/
+      dockerfile: ../deployment/web/Dockerfile
+    ports: 
+      - "80:80"
