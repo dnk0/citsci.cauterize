@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "39f265d7-b5cf-40aa-8b77-20dbf4885b4d",
+		"name": "citsci.cauterize.backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "registrations",
+					"item": [
+						{
+							"name": "register new user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"test7\",\n\t\"password\": \"tt\",\n\t\"email\": \"a@b7\",\n\t\"first_name\": \"dennis\",\n\t\"last_name\": \"kreußel\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/u/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"u",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "sessions",
+					"item": [
+						{
+							"name": "login user",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"username\":\"test7\",\n\"password\":\"tt\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/u/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"u",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "unexpected error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"code\": \"<integer>\",\n \"message\": \"<string>\"\n}"
+								},
+								{
+									"name": "authentication tokens for the user login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"access_token\": \"<jwt>\",\n \"refresh_token\": \"<jwt>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "logout user",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8afd4e14-b235-4359-a76e-ed056ac5a41e",
+										"exec": [
+											"const baseUrl = pm.variables.get(\"baseUrl\");",
+											"const echoPostRequest = {",
+											"    url: baseUrl + 'login',",
+											"    method: 'POST',",
+											"    header: 'Content-Type:application/json',",
+											"    body: {",
+											"        mode: 'application/json',",
+											"        raw: JSON.stringify(",
+											"            {",
+											"                username: \"username\",",
+											"                password: \"password\"",
+											"            })",
+											"    }",
+											"};",
+											"",
+											"var getToken = true;",
+											"",
+											"if (getToken === true) {",
+											"    pm.sendRequest(echoPostRequest, function (err, res) {",
+											"        console.log(err ? err : res.json());",
+											"        if (err === null) {",
+											"            console.log('Saving the token and expiry date')",
+											"            var responseJson = res.json();",
+											"            pm.environment.set('currentAccessToken', responseJson.access_token)",
+											"            pm.environment.set('currentRefreshToken', responseJson.refresh_token);",
+											"        }",
+											"    });",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{currentAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/u/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"u",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh login token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{currentAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"refresh_token\": \"{{currentRefreshToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/u/refresh",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"u",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "application_resource",
+					"item": [
+						{
+							"name": "request protected endpoint",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{currentAccessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"example title\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/example",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"example"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d6850ed6-f6c4-4a2c-92e1-021e3841a6a3",
+				"type": "text/javascript",
+				"exec": [
+					"const baseUrl = pm.variables.get(\"baseUrl\");",
+					"const echoPostRequest = {",
+					"    url: baseUrl + '/u/login',",
+					"    method: 'POST',",
+					"    header: 'Content-Type:application/json',",
+					"    body: {",
+					"        mode: 'application/json',",
+					"        raw: JSON.stringify(",
+					"            {",
+					"                username: pm.variables.get(\"currentUserName\"),",
+					"                password: pm.variables.get(\"currentUserPassword\")",
+					"            })",
+					"    }",
+					"};",
+					"",
+					"var getToken = true;",
+					"",
+					"if (getToken === true) {",
+					"    pm.sendRequest(echoPostRequest, function (err, res) {",
+					"        console.log(err ? err : res.json());",
+					"        if (err === null) {",
+					"            console.log('Saving the token and expiry date')",
+					"            var responseJson = res.json();",
+					"            pm.environment.set('currentAccessToken', responseJson.access_token)",
+					"            pm.environment.set('currentRefreshToken', responseJson.refresh_token);",
+					"        }",
+					"    });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "019e4974-293b-4db3-9f25-688fc5cb12ed",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1739af95-0f15-492c-90fb-e8a0f64a1013",
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "a21a15f3-95ef-4815-87d6-1c6534f60f32",
+			"key": "currentUserName",
+			"value": "test6",
+			"type": "string"
+		},
+		{
+			"id": "86c1c9bd-3f54-47d6-b610-d09ffdd0eaa2",
+			"key": "currentUserPassword",
+			"value": "testyeeeeeeetest",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
