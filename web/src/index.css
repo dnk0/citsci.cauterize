@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+}
+
+html, body, #root, #root > div {
+  width: 100vw;
+  height: 100vh;
+}
+
+.selected {
+  font-weight: 700 !important;
+}
+
+.card {
+  border: 0;
+  border-radius: 0.185rem;
+  display: flex;
+  box-shadow: 0 1px 15px 1px rgba(39,39,39,.1);
+  background-color: #fff;
+  background-clip: border-box;
+  color: #2c2c2c;
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}

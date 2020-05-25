@@ -1,0 +1,50 @@
+#header {
+    height: 70px;
+    background-color: hsl(200, 60%, 15%);
+    width: 100vw;
+    color: white;
+    display: block;
+    box-sizing: border-box;
+}
+
+#header .header-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 950px;
+    height: 100%;
+}
+
+#header .header-content .logo {
+    display: inline;
+}
+
+#header .header-content .logo a {
+    font-size: 17px;
+    line-height: 70px;
+    padding: 28px 0;
+    font-weight: 500;
+    display: inline;
+    color: rgba(255, 255, 255, .8);
+    text-decoration: none;
+}
+
+#header .header-content .nav {
+    float: right;
+    font-weight: 300;
+    display: inline;
+}
+
+#header .header-content .nav a {
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 70px;
+    color: rgba(255, 255, 255, .8);
+    padding: 28px 0;
+}
+
+#header .header-content .nav a:hover {
+    color: rgba(255, 255, 255, 1);
+}

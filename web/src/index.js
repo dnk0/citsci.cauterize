@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import store from './app/store'
+import RouterRoot from "./routes";
 import * as serviceWorker from './serviceWorker';
+import {Provider} from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterRoot />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
