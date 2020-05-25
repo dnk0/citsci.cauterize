@@ -1,5 +1,8 @@
 # citsci.cauterize
 
+* in project report: stakeholders
+
+
 citsci.cauterize is a citizen project about evaluating robust machine learning algorithms in different test scenarios.
 Researchers and citizen scientists alike can publish their algorithms and take part in a community endavour to find general robust machine learning algorithms.
 
