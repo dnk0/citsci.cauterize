@@ -1,5 +1,17 @@
 # citsci.cauterize
 
+citsci.cauterize is a citizen project about evaluating robust machine learning algorithms in different test scenarios.
+Researchers and citizen scientists alike can publish their algorithms and take part in a community endavour to find general robust machine learning algorithms.
+
+* automatically publish a survey paper every 3-6months concluding new knowledge from all results
+* split up research interests by scenario
+        * e.g. malware detection vs. autonomous driving vs. face recognition vs ...
+* split up leaderboard by:
+        * scenario
+        * by attack scenarios
+        * by evaluation functions
+        * advanced filter options
+
 ## Motivating People
 
 With regards to open source development and stackeroverflow we see that technical experience and solving real world problems is always a valuable activity. Often these activites are used in CVs to certify problem solving skills. 
