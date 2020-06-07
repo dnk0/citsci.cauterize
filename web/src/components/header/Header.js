@@ -11,6 +11,7 @@ const Header = () => (
                 </NavLink>
             </div>
             <div className={"nav"}>
+                <NavLink exact to={"/scenarios"} activeClassName={"selected"}>SCENARIOS</NavLink>
                 <NavLink exact to={"/"} activeClassName={"selected"}>ABOUT</NavLink>
                 <NavLink exact to={"/auth/login"} activeClassName={"selected"}>LOGIN</NavLink>
                 <NavLink exact to={"/auth/signup"} activeClassName={"selected"}>SIGNUP</NavLink>

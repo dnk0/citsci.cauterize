@@ -1,9 +1,13 @@
 import React from 'react';
-import {Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import VisibleScenarioList from './../containers/visibleScenarioList'
+import AddEntry from './../containers/addEntry' 
 
 const routes = (
     <Route path={"/scenarios"}>
         <div>
+            <AddEntry /> 
+            <VisibleScenarioList />
             lol scenarios
         </div>
         <Switch>
