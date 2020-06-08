@@ -11,6 +11,8 @@ func InitializeRoutes(router *gin.Engine) {
 	// Use the setUserStatus middleware for every route to set a flag
 	// indicating whether the request was from an authenticated user or not
 	router.Use(middlewares.SetUserStatus())
+	router.Use(middlewares.CORSMiddleware())
+
 
 	// Group user related routes together
 	userRoutes := router.Group("/u")
