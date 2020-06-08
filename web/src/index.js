@@ -5,6 +5,9 @@ import store from './app/store'
 import RouterRoot from "./routes";
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
+import {update} from './actions/auth'
+
+update()(store.dispatch)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Header.css';
 import {NavLink} from 'react-router-dom';
+import HeaderUserDisplay from "../../containers/header_user_display/HeaderUserDisplay";
 
 const Header = () => (
     <div id={"header"}>
@@ -10,11 +11,7 @@ const Header = () => (
                     Cauterize
                 </NavLink>
             </div>
-            <div className={"nav"}>
-                <NavLink exact to={"/"} activeClassName={"selected"}>ABOUT</NavLink>
-                <NavLink exact to={"/auth/login"} activeClassName={"selected"}>LOGIN</NavLink>
-                <NavLink exact to={"/auth/signup"} activeClassName={"selected"}>SIGNUP</NavLink>
-            </div>
+            <HeaderUserDisplay />
         </div>
     </div>
 )

@@ -48,3 +48,7 @@
 #header .header-content .nav a:hover {
     color: rgba(255, 255, 255, 1);
 }
+
+#header .header-content .nav button {
+    margin-left: 20px;
+}

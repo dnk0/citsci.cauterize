@@ -1,14 +1,12 @@
 import React from 'react';
 import {Switch, Route} from "react-router-dom";
+import Login from "../containers/login/Login";
 
 const routes = (
     <Route path={"/auth"}>
-        <div>
-            lol auth
-        </div>
         <Switch>
             <Route path="/auth/login" component={
-                () => (<div>Template 1</div>)}/>
+                () => (<Login />)}/>
             <Route path="/auth/signup" component={
                 () => (<div>Template 2</div>)}/>
         </Switch>

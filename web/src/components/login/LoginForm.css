@@ -1,0 +1,27 @@
+.login_input {
+    border: 1px solid rgb(91, 105, 135);
+    color: rgb(3, 27, 78);
+    width: 70%;
+    display: block;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.login-form-wrapper {
+    padding: 20px 2rem 2rem 2rem;
+    width: 480px;
+    position: relative;
+    z-index: 1;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.25rem 0.25rem;
+    overflow: auto;
+    border: 1px solid rgba(91, 105, 135, 0.22);
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}

@@ -28,6 +28,28 @@ const LeaderBoard = () => (
                     </li>
                 </ul>
             </li>
+            <li className={"leaderboard-item"}>
+                <ul className={"leaderboard-item-content"}>
+                    <li className={"leaderboard-item-rank"}>
+                        2
+                    </li>
+                    <li className={"leaderboard-item-name"}>
+                        Malware Detection
+                    </li>
+                    <li className={"leaderboard-item-absolut"}>
+                        254k
+                    </li>
+                    <li className={"leaderboard-item-relative"}>
+                        -50%
+                    </li>
+                    <li className={"leaderboard-item-performance"}>
+
+                    </li>
+                    <li className={"leaderboard-item-actions"}>
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </li>
+                </ul>
+            </li>
         </ol>
     </div>
 )

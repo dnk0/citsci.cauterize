@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../reducers/counter';
+import authReducer from '../reducers/auth';
+import ThunkMiddleware from 'redux-thunk'
 
 export default configureStore({
     reducer: {
-        counter: counterReducer,
+        auth: authReducer,
     },
+    middleware: [
+        ThunkMiddleware
+    ]
+
 });
